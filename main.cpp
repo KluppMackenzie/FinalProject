@@ -5,17 +5,16 @@ using namespace std;
 int con();
 int main() {
     string fileline;//step 4
-    ofstream fout;//step 2
-    fout.open("output.txt");//step 3
     ifstream ifs;//step 5
     ifs.open("input.txt");//step 6
 
-    fout << "Hello world!\n";
+
 
     string name, input, attack;
     string mageOptions[4] = {"flameshot", "strike", "Abscond", "MageSheild"};
     string fighterOptions[4] = {"Stabbing", "Sheild", "Abscond", "BackHand"};
     string archerOptions[4] = {"ArrowFire", "Sheild", "Abscond", "BowSmack"};
+
     int pat = 0;
 
 
@@ -72,8 +71,6 @@ int main() {
         pat ++;
     }while (attack != "1" && attack != "2" && attack != "3" && attack != "4");
 
-
-    fout.close();
     ifs.close();
    return 0;
 }
