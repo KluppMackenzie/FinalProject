@@ -11,11 +11,10 @@ int main() {
 
 
     string name, input, attack;
-    string mageOptions[4] = {"flameshot", "strike", "Abscond", "MageSheild"};
-    string fighterOptions[4] = {"Stabbing", "Sheild", "Abscond", "BackHand"};
-    string archerOptions[4] = {"ArrowFire", "Sheild", "Abscond", "BowSmack"};
+    string fightOptions[3][4] ={"flameshot", "strike", "Abscond", "MageSheild",
+        "Stabbing", "Sheild", "Abscond", "BackHand", "ArrowFire", "Sheild", "Abscond", "BowSmack"};
 
-    int pat = 0;
+    int in, pat = 0;
 
 
     //title screen
@@ -38,8 +37,7 @@ int main() {
     con();
     // mage fighter or archer
     cout << "The air shimmers with a faint golden glow as a wizened figure in a flowing robe, adorned with celestial patterns, emerges from the shadows of an ancient forest. His long silver beard seems to glisten with tiny stardust, and a staff tipped with a crystal pulsates faintly in his hand." << endl;
-    cout << "With a voice like a deep, echoing stream, he speaks:
-    "Ah, a seeker of wisdom stands before me. Tell me, traveler, what stirs your soul to seek an audience with one who listens to the whispers of the cosmos? Is it knowledge you crave, power you desire, or perhaps a path unseen that you wish to tread?"<< endl;;
+    cout << "With a voice like a deep, echoing stream, he speaks: Ah, a seeker of wisdom stands before me. Tell me, traveler, what stirs your soul to seek an audience with one who listens to the whispers of the cosmos? Is it knowledge you crave, power you desire, or perhaps a path unseen that you wish to tread?"<< endl;;
     cout << "The wizard gazes at you intently, his eyes glowing faintly as though reflecting a thousand untold stories."<< endl;;
     cout << "What will you ask him?"<< endl;;
     //option selection screen
@@ -56,7 +54,16 @@ int main() {
        }
        }
    while (input != "1" && input != "2" && input != "3");
-
+    if (input == "3") {
+        in = 2;
+        cout << "you chose mage! and can cast spells against your targets! but be careful attack effect you more do to lower HP." << endl ;
+    }
+    else if (input == "2") {
+        in = 1;
+        cout << "you chose mage! and can cast spells against your targets! but be careful attack effect you more do to lower HP." << endl ;
+    }else {
+        in = 0;
+    }
     //story continues
    cout << "" << endl;
    cout << "" << endl;
@@ -70,9 +77,8 @@ int main() {
             cout << "you lost your turn, foe is attacking.\n";
         }
         cout << "How will you attack?\n";
-        if(input=="1") cout << mageOptions[0]<< ""<< mageOptions[1] << mageOptions[2]<< mageOptions[3];
-        if(input=="2") cout << fighterOptions[0]<< fighterOptions[1] << fighterOptions[2]<< fighterOptions[3];
-        if(input=="3") cout << archerOptions[0]<< archerOptions[1] << archerOptions[2]<< archerOptions[3];
+        cout << fightOptions[in][0] << "[1] " <<fightOptions[in][1]<< "[2] " <<fightOptions[in][2] << "[3] " <<fightOptions[in][3] << "[4] " << endl;
+
         cin >> attack;
         pat ++;
     }while (attack != "1" && attack != "2" && attack != "3" && attack != "4");
