@@ -1,0 +1,10 @@
+# ninja log v6
+1	533	1732729342531821939	CMakeFiles/FinalProject.dir/functions.cpp.o	ee31251f5f279022
+535	989	1732729343063829252	CMakeFiles/FinalProject.dir/main.cpp.o	762fd662933a242f
+989	1137	1732729343519835521	FinalProject	b917aa78b9fd18a5
+2	419	1732729868491055614	CMakeFiles/FinalProject.dir/functions.cpp.o	ee31251f5f279022
+2	426	1732730393242278929	CMakeFiles/FinalProject.dir/main.cpp.o	762fd662933a242f
+426	516	1732730393666284768	FinalProject	b917aa78b9fd18a5
+3	394	1733160369313379686	CMakeFiles/FinalProject.dir/functions.cpp.o	ee31251f5f279022
+4	533	1733161075763341610	CMakeFiles/FinalProject.dir/main.cpp.o	762fd662933a242f
+533	675	1733161076291349055	FinalProject	b917aa78b9fd18a5
