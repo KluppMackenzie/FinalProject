@@ -2,7 +2,7 @@
 
 #include <iostream>
 using namespace std;
-
+//Continue Function
 int con() {
     string in;
     do {
