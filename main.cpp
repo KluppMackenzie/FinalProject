@@ -3,6 +3,7 @@
 
 using namespace std;
 int con();
+int attack(int in, string fightOptions[3][4], bool &distant, bool &sheild, bool &opSheild);
 int main() {
     string fileline;//step 4
     ifstream ifs;//step 5
@@ -11,7 +12,10 @@ int main() {
 
 
     string name, input;
-    string fightOptions[3][4] ={"flameshot", "strike", "Abscond", "MageSheild",
+    bool distant = false, opSheild = false, sheild;
+    string attackLines[4] ={"Your opponent used Abscond and is attempting to get away from you.(disadvantages close attacks)",
+    "your opponent used sheild and takes 0 damage this turn.", "your opponent used Stab and lunges their sword at you", "your opponent used Strike and throws their are in your direction."};
+    string fightOptions[3][4] ={"flameshot", "MageSheild", "Abscond", "Strike",
         "Stabbing", "Sheild", "Abscond", "BackHand", "ArrowFire", "Sheild", "Abscond", "BowSmack"};
 
     int in, hp, opHp, opAttack, damage;
@@ -56,7 +60,7 @@ int main() {
    while (input != "1" && input != "2" && input != "3");
     if (input == "1") {
         in = 0;
-        hp = 15
+        hp = 15;
         cout << "you chose mage! and can cast spells against your targets! but be careful attack effect you more do to lower HP." << endl ;
     }
     else if (input == "2") {
@@ -74,9 +78,23 @@ int main() {
     opHp = 15;
     cout << "your first opponent has entered the ring you must defeat all 3 opponents to win!" << endl ;
     while (hp> 0 && opHp > 0) {
+        opSheild = false;
         opAttack = rand() %4;
-        cout << opAttack;
-
+        if (opAttack == 0) {
+            opSheild = true;
+            cout << "opponent used sheild to stop any oncomming attacks."
+        }else if (opAttack == 1) {
+            hp -= 1;
+            distant = true;
+            cout<< "your opponent absconded and kick off of you creating space \n you take 1 damage.\n";
+        }else if (opAttack == 2) {
+            if (distant) {
+                hp -= 5;
+                cout <<"your opponent made a Strike at you \n you take 5 damage" ;
+            }else{
+        }
+        cout << "your current HP : " << hp << " while your opponent:" << opHp <<endl ;
+        opHp -= attack( in, fightOptions, distant, sheild, opSheild);
     }
 
     if (hp > 0) {
