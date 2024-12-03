@@ -144,7 +144,7 @@ int main() {
     cout << "And so it ends! A battle worthy of the Coliseum's eternal legacy! Let all who witness remember this day, when strength and will shaped destiny." << endl;
     cout <<  "The crowd erupts once more, a cacophony of cheers, gasps, and chants of the victor's name. From the shadows of the arena gates, attendants rush forth, tending to the wounded and collecting the fallen. The defeated warrior is lifted with care, their honor intact despite their loss.\n";
     cout << "The victor gazes upward as a column of light descends upon them. It is warm, enveloping, and imbued with a power that seems to mend their wounds and ease their exhaustion. This is the Coliseum's gift—the favor of the gods, whispered to grant not just strength, but a glimpse of immortality.\n";
-    cout << "As the light fades, the victor raises their weapon high, a silent acknowledgment to the crowd, their opponent, and the unseen forces that preside over this ancient, sacred battleground. Today, they are more than a warrior; they are legend.\n";
+    cout << "As the light fades, the victor raises their weapon high, a silent acknowledgment to the crowd, their opponent, and the unseen forces that preside over this ancient, sacred battleground. Today, they are more than a warrior; "<< name << "is are legend.\n";
 
     ifs.close();
    return 0;
