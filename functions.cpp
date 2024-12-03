@@ -13,16 +13,21 @@ int con() {
 }
 
 int attack(int in, string fightOptions[3][4], bool &distant, bool &sheild, bool &opSheild) {
+    //initalizing my variables
     int damage = 0, pat = 0;
     string attack;
     sheild = false;
+    // do while loop to gain player input but not letting it past till given a valid response
     do {
+        //if a user messes up it will keep track of how many times they didnt input a valid response
         if (pat > 4) cout << "your foe is getting impatient do something before they ready their next attack \n";
         if (pat > 6) {
             cout << "you lost your turn and automatically did sheild, foe is now attacking.\n";
             sheild = true;
+            //stops the function early so it doesnt run all the way through
             return 0;
         }
+        //outputs
         cout << "How will you attack?\n";
         cout << fightOptions[in][0] << "[1] " <<fightOptions[in][1]<< "[2] " <<fightOptions[in][2] << "[3] " <<fightOptions[in][3] << "[4] " << endl;
         cin >> attack;
@@ -65,7 +70,5 @@ int attack(int in, string fightOptions[3][4], bool &distant, bool &sheild, bool 
         }
         distant = false;
     }
-
-
     return damage;
 }

@@ -5,9 +5,10 @@ using namespace std;
 int con();
 int attack(int in, string fightOptions[3][4], bool &distant, bool &sheild, bool &opSheild);
 int main() {
-    string fileline;//step 4
-    ifstream ifs;//step 5
-    ifs.open("https://github.com/KluppMackenzie/FinalProject/blob/26c345e1a2b48785938a76b6e474fd9827792d04/input.txt");//step 6
+
+    string fileline;
+    ifstream ifs;
+    ifs.open("/home/administrator/CLionProjects/untitled/cmake-build-debug/input.txt");
 
 
 
