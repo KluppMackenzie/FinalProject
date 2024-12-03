@@ -3,20 +3,21 @@
 
 using namespace std;
 int con();
+int attack(int in, string fightOptions[3][4], bool &distant, bool &sheild, bool &opSheild);
 int main() {
-    string fileline;//step 4
-    ofstream fout;//step 2
-    fout.open("output.txt");//step 3
-    ifstream ifs;//step 5
-    ifs.open("input.txt");//step 6
+    //file related materials
+    string fileline;
+    ifstream ifs;
+    ifs.open("/home/administrator/CLionProjects/untitled/cmake-build-debug/input.txt");
 
-    fout << "Hello world!\n";
+    //initalizing variables
+    string name, input;
+    int in, hp, opHp, opAttack, damage;
+    bool distant = false, opSheild = false, sheild;
+    string fightOptions[3][4] ={"flameshot", "MageSheild", "Abscond", "Strike",
+        "Stabbing", "Sheild", "Abscond", "Strike", "ArrowFire", "Sheild", "Abscond", "BowSmack"};
 
-    string name, input, attack;
-    string mageOptions[4] = {"flameshot", "strike", "Abscond", "MageSheild"};
-    string fighterOptions[4] = {"Stabbing", "Sheild", "Abscond", "BackHand"};
-    string archerOptions[4] = {"ArrowFire", "Sheild", "Abscond", "BowSmack"};
-    int pat = 0;
+
 
 
     //title screen
@@ -57,44 +58,94 @@ int main() {
        }
        }
    while (input != "1" && input != "2" && input != "3");
-
+    if (input == "1") {
+        in = 0;
+        hp = 15;
+        cout << "you chose mage! you can cast spells against your targets and don't have to worry about them being too far to attack\n but watch out, mages have only 15 hp." << endl ;
+    }
+    else if (input == "2") {
+        in = 1;
+        hp = 25;
+        cout << "you chose Fighter! you have a hp of 25 and stronger attack damages on Strikes." << endl ;
+    }else {
+        in = 0;
+        hp = 20;
+        cout << "you chose Archer! your able to close attack and distance attack with the same power your hp is 20" << endl ;
+    }
     //story continues
-
    con();
-    cout << "The journey begins as the sun crests the horizon, its golden light spilling across the rugged path ahead. You clutch the map in your hand—a faded parchment marked with symbols of beasts, labyrinthine corridors, and a single, bold destination: The Grand Coliseum of Eternis. "
-            "The air grows heavier with every step closer, thick with anticipation and echoes of ancient battles. Tales of the Coliseum's glory whisper on the breeze—stories of warriors and creatures that fought not just for victory, but for the favor of gods and the promise of immortality."
-            "You cross a jagged bridge that spans a chasm, the faint roar of a waterfall below mingling with the rustle of trees. Ahead, the Coliseum rises from the earth, its massive stone walls weathered by centuries yet glowing faintly with a strange, otherworldly light. "
-            "The gates, towering and adorned with carvings of mythical creatures, seem alvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvost alive, the engravings shifting ever so slightly when you look away."
-            "A cloaked figure appears beside you as you near the entrance."
-            " A traveler?" << endl;
+    cout << "The journey begins as the sun crests the horizon, its golden light spilling across the rugged path ahead. You clutch the map in your hand—a faded parchment marked with symbols of beasts, labyrinthine corridors, and a single, bold destination: The Grand Coliseum of Eternis. \n"
+        "The air grows heavier with every step closer, thick with anticipation and echoes of ancient battles. \nTales of the Coliseum's glory whisper on the breeze—stories of warriors and creatures that fought not just for victory, but for the favor of gods and the promise of immortality.\n"
+        "You cross a jagged bridge that spans a chasm, the faint roar of a waterfall below mingling with the rustle of trees. Ahead, the Coliseum rises from the earth, its massive stone walls weathered by centuries yet glowing faintly with a strange, otherworldly light. \n"
+        "The gates, towering and adorned with carvings of mythical creatures, seem almost alive, the engravings shifting ever so slightly when you look away."
+        "A cloaked figure appears beside you as you near the entrance."
+        " A traveler?" << endl;
     cout <<  " the figure murmurs, their voice like the hiss of wind through leaves. " << endl;
-    cout << "To enter the Coliseum is to face more than battles. It is to confront destiny itself. "
-    "Tell me, seeker, what do you hope to find beyond these gates?" << endl;
-    cout << "Their eyes glimmer beneath the hood, waiting for your answer.";
+    cout << "To enter the Coliseum is to face more than battles. It is to confront destiny itself. \n";
+    con();
+    cout << "before you can do anything the figure waves his hand in the air and you are instantly without warning transported to the middle of the coliseum";
+    cout << endl << "to make it back home you must survive and beat all 3 of your upcoming opponents" ;
+    // First Fight starts
+    opHp = 15;
+    cout << "your first opponent has entered the ring you must defeat all 3 opponents to win!" << endl ;
+    for (int i = 0; i < 3; i++) {
+        opHp = 15;
+        if (i == 2)opHp = 20;
 
+        if (in = 0)hp = 15;
+        else if (in == 1)hp = 25;
+        else if (in == 2)hp = 20;
 
-    do {
-        if (pat > 4) cout << "your foe is getting impatient do something before they ready their next attack \n";
-        if (pat > 6) {
-            cout << "you lost your turn, foe is attacking.\n";
+        while (hp> 0 && opHp > 0) {
+            opSheild = false;
+            opAttack = rand() %4;
+
+            if (i== 1) {
+                cout<< "your second opponent is in the ring\n";
+                con();
+            } else if (i == 2) {
+                cout << "your final opponent is in the ring!\n";
+                con();
+            }
+            if (opAttack == 0) {
+                opSheild = true;
+                cout << "opponent used sheild to stop any oncomming attacks.";
+            }else if (opAttack != 1 && sheild) {
+                cout << "your opponents attack misses because of your sheild.";
+            }else if (opAttack == 1) {
+                hp -= 1;
+                distant = true;
+                cout<< "your opponent absconded and kick off of you creating space \n you take 1 damage.\n";
+            }else if (opAttack == 2) {
+                if (distant) {
+
+                    cout <<"your opponent made a Strike at you \n your out of range so you take no damage.\n" ;
+                }else{
+                    hp -= 5;
+                    cout <<"your opponent made a Strike at you \n you take 5 damage. \n" ;
+                }
+            }else {
+                cout << "your opponent takes a stab at you\n you take 5 damage";
+                hp -= 5;
+            }
+            if (hp < 0) {
+                cout << "YOu died";
+                break;
+            }else {
+                cout << "your current HP : " << hp << " while your opponent:" << opHp <<endl ;
+                opHp -= attack( in, fightOptions, distant, sheild, opSheild);
+            }
         }
-        cout << "How will you attack?\n";
-        if(input=="1") cout << mageOptions[0]<< ""<< mageOptions[1] << mageOptions[2]<< mageOptions[3];
-        if(input=="2") cout << fighterOptions[0]<< fighterOptions[1] << fighterOptions[2]<< fighterOptions[3];
-        if(input=="3") cout << archerOptions[0]<< archerOptions[1] << archerOptions[2]<< archerOptions[3];
-        cin >> attack;
-        pat ++;
-    }while (attack != "1" && attack != "2" && attack != "3" && attack != "4");
-
-
-    cout << "The air is thick with dust and the scent of sweat and blood. The crowd in the Coliseum roars, their voices a thunderous wave crashing against the ancient stone walls. The once-pristine arena floor is now a chaotic battlefield, littered with shattered weapons, splintered shields, and the marks of fierce combat."
-        "In the center stands the victor, their chest heaving as they clutch a bloodied blade. Their armor bears the scars of the brutal encounter—dents, scratches, and the unmistakable burn of magic. Across from them, their opponent lies defeated, the remnants of their weapon clattering to the ground as silence begins to settle."
-        "Above, the sky darkens unnaturally, swirling with clouds that glow faintly gold. The Grandmaster of the Coliseum rises from a throne high above the arena, their voice booming through the air. " << endl;
+    }
+    cout << "The air is thick with dust and the scent of sweat and blood. The crowd in the Coliseum roars, their voices a thunderous wave crashing against the ancient stone walls. \n";
+    cout << "The once-pristine arena floor is now a chaotic battlefield, littered with shattered weapons, splintered shields, and the marks of fierce combat.";
+    cout << "In the center stands the victor, their chest heaving as they clutch a bloodied blade. Their armor bears the scars of the brutal encounter—dents, \n scratches, and the unmistakable burn of magic. Across from them, their opponent lies defeated, the remnants of their weapon clattering to the ground as silence begins to settle.\n";
+    cout << "Above, the sky darkens unnaturally, swirling with clouds that glow faintly gold. The Grandmaster of the Coliseum rises from a throne high above the arena, their voice booming through the air. " << endl;
     cout << "And so it ends! A battle worthy of the Coliseum's eternal legacy! Let all who witness remember this day, when strength and will shaped destiny." << endl;
-    cout <<  "The crowd erupts once more, a cacophony of cheers, gasps, and chants of the victor's name. From the shadows of the arena gates, attendants rush forth, tending to the wounded and collecting the fallen. The defeated warrior is lifted with care, their honor intact despite their loss."
-             "The victor gazes upward as a column of light descends upon them. It is warm, enveloping, and imbued with a power that seems to mend their wounds and ease their exhaustion. This is the Coliseum's gift—the favor of the gods, whispered to grant not just strength, but a glimpse of immortality."
-             "As the light fades, the victor raises their weapon high, a silent acknowledgment to the crowd, their opponent, and the unseen forces that preside over this ancient, sacred battleground. Today, they are more than a warrior; they are legend.";
-    fout.close();
+    cout <<  "The crowd erupts once more, a cacophony of cheers, gasps, and chants of the victor's name. From the shadows of the arena gates, attendants rush forth, tending to the wounded and collecting the fallen. The defeated warrior is lifted with care, their honor intact despite their loss.\n";
+    cout << "The victor gazes upward as a column of light descends upon them. It is warm, enveloping, and imbued with a power that seems to mend their wounds and ease their exhaustion. This is the Coliseum's gift—the favor of the gods, whispered to grant not just strength, but a glimpse of immortality.\n";
+    cout << "As the light fades, the victor raises their weapon high, a silent acknowledgment to the crowd, their opponent, and the unseen forces that preside over this ancient, sacred battleground. Today, they are more than a warrior; they are legend.\n";
+
     ifs.close();
    return 0;
 }
