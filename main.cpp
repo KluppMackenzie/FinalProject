@@ -13,8 +13,6 @@ int main() {
 
     string name, input;
     bool distant = false, opSheild = false, sheild;
-    string attackLines[4] ={"Your opponent used Abscond and is attempting to get away from you.(disadvantages close attacks)",
-    "your opponent used sheild and takes 0 damage this turn.", "your opponent used Stab and lunges their sword at you", "your opponent used Strike and throws their are in your direction."};
     string fightOptions[3][4] ={"flameshot", "MageSheild", "Abscond", "Strike",
         "Stabbing", "Sheild", "Abscond", "BackHand", "ArrowFire", "Sheild", "Abscond", "BowSmack"};
 
@@ -77,29 +75,58 @@ int main() {
     // First Fight starts
     opHp = 15;
     cout << "your first opponent has entered the ring you must defeat all 3 opponents to win!" << endl ;
-    while (hp> 0 && opHp > 0) {
-        opSheild = false;
-        opAttack = rand() %4;
-        if (opAttack == 0) {
-            opSheild = true;
-            cout << "opponent used sheild to stop any oncomming attacks."
-        }else if (opAttack == 1) {
-            hp -= 1;
-            distant = true;
-            cout<< "your opponent absconded and kick off of you creating space \n you take 1 damage.\n";
-        }else if (opAttack == 2) {
-            if (distant) {
+    for (int i = 0; i < 3; i++) {
+        opHp = 15;
+        if (i == 2)opHp = 20;
+
+        if (in = 0)hp = 15;
+        else if (in == 1)hp = 25;
+        else if (in == 2)hp = 20;
+
+        while (hp> 0 && opHp > 0) {
+            opSheild = false;
+            opAttack = rand() %4;
+
+            if (i== 1) {
+                cout<< "your second opponent is in the ring\n";
+                con();
+            } else if (i == 2) {
+                cout << "your final opponent is in the ring!\n";
+                con();
+            }
+
+
+            if (opAttack == 0) {
+                opSheild = true;
+                cout << "opponent used sheild to stop any oncomming attacks.";
+            }else if (opAttack != 1 && sheild) {
+                cout << "your opponents attack misses because of your sheild.";
+            }else if (opAttack == 1) {
+                hp -= 1;
+                distant = true;
+                cout<< "your opponent absconded and kick off of you creating space \n you take 1 damage.\n";
+            }else if (opAttack == 2) {
+                if (distant) {
+
+                    cout <<"your opponent made a Strike at you \n your out of range so you take no damage.\n" ;
+                }else{
+                    hp -= 5;
+                    cout <<"your opponent made a Strike at you \n you take 5 damage. \n" ;
+                }
+            }else {
+                cout << "your opponent takes a stab at you\n you take 5 damage";
                 hp -= 5;
-                cout <<"your opponent made a Strike at you \n you take 5 damage" ;
-            }else{
+            }
+            if (hp < 0) {
+                cout << "YOu died";
+                break;
+            }else {
+                cout << "your current HP : " << hp << " while your opponent:" << opHp <<endl ;
+                opHp -= attack( in, fightOptions, distant, sheild, opSheild);
+            }
         }
-        cout << "your current HP : " << hp << " while your opponent:" << opHp <<endl ;
-        opHp -= attack( in, fightOptions, distant, sheild, opSheild);
     }
 
-    if (hp > 0) {
-        cout << "YOu died";
-    }
     ifs.close();
    return 0;
 }
