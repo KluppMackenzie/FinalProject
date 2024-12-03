@@ -5,19 +5,19 @@ using namespace std;
 int con();
 int attack(int in, string fightOptions[3][4], bool &distant, bool &sheild, bool &opSheild);
 int main() {
-
+    //file related materials
     string fileline;
     ifstream ifs;
     ifs.open("/home/administrator/CLionProjects/untitled/cmake-build-debug/input.txt");
 
-
-
+    //initalizing variables
     string name, input;
+    int in, hp, opHp, opAttack, damage;
     bool distant = false, opSheild = false, sheild;
     string fightOptions[3][4] ={"flameshot", "MageSheild", "Abscond", "Strike",
         "Stabbing", "Sheild", "Abscond", "Strike", "ArrowFire", "Sheild", "Abscond", "BowSmack"};
 
-    int in, hp, opHp, opAttack, damage;
+
 
 
     //title screen
@@ -107,8 +107,6 @@ int main() {
                 cout << "your final opponent is in the ring!\n";
                 con();
             }
-
-
             if (opAttack == 0) {
                 opSheild = true;
                 cout << "opponent used sheild to stop any oncomming attacks.";
