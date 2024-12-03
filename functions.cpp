@@ -13,16 +13,21 @@ int con() {
 }
 
 int attack(int in, string fightOptions[3][4], bool &distant, bool &sheild, bool &opSheild) {
+    //initalizing my variables
     int damage = 0, pat = 0;
     string attack;
     sheild = false;
+    // do while loop to gain player input but not letting it past till given a valid response
     do {
+        //if a user messes up it will keep track of how many times they didnt input a valid response
         if (pat > 4) cout << "your foe is getting impatient do something before they ready their next attack \n";
         if (pat > 6) {
             cout << "you lost your turn and automatically did sheild, foe is now attacking.\n";
             sheild = true;
+            //stops the function early so it doesnt run all the way through
             return 0;
         }
+        //outputs
         cout << "How will you attack?\n";
         cout << fightOptions[in][0] << "[1] " <<fightOptions[in][1]<< "[2] " <<fightOptions[in][2] << "[3] " <<fightOptions[in][3] << "[4] " << endl;
         cin >> attack;
@@ -42,14 +47,14 @@ int attack(int in, string fightOptions[3][4], bool &distant, bool &sheild, bool 
             cout << "you decided to "<< fightOptions[in][0] <<" \n your opponet's sheild was up :0\n";
             damage =0;
         }else if (in == 1) {
-            cout << "you decided to "<< fightOptions[in][0] <<" \n you delt 7 damage\n";
+            cout << "you decided to "<< fightOptions[in][0] <<" \n you dealat 7 damage\n";
             damage = 7;
         }
         else if (in == 2) {
-            cout << "you decided to "<< fightOptions[in][0] <<" \n you delt 6 damage\n";
+            cout << "you decided to "<< fightOptions[in][0] <<" \n you dealt 6 damage\n";
             damage = 6;
         }else {
-            cout << "you decided to "<< fightOptions[in][0] <<" \n you delt 5 damage\n";
+            cout << "you decided to "<< fightOptions[in][0] <<" \n you dealt 5 damage\n";
             damage = 5;
         }
     }else {
@@ -57,15 +62,13 @@ int attack(int in, string fightOptions[3][4], bool &distant, bool &sheild, bool 
             cout << "you decided to "<< fightOptions[in][0] <<" \n your opponet's sheild was up or they are to far away. \n you are now close enough for next time\n";
             damage = 0;
         }else if (in == 1) {
-            cout << "you decided to "<< fightOptions[in][0] <<" \n you delt 7 damage\n";
+            cout << "you decided to "<< fightOptions[in][0] <<" \n you dealt 7 damage\n";
             damage = 7;
         }else {
-            cout << "you decided to "<< fightOptions[in][0] <<" \n you delt 5 damage\n";
+            cout << "you decided to "<< fightOptions[in][0] <<" \n you dealt 5 damage\n";
             damage = 5;
         }
         distant = false;
     }
-
-
     return damage;
 }
