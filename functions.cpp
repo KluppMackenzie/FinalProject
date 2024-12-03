@@ -36,7 +36,7 @@ int attack(int in, string fightOptions[3][4], bool &distant, bool &sheild, bool 
     if (attack == "3") {
         distant = true;
         damage = 1;
-        cout << "you decided to abscond and get out of their by pushing off of your opponent \n they take 1 damage and you are safe from close attacks";
+        cout << "you decided to abscond and get out of their by pushing off of your opponent \n they take 1 damage and you are safe from close attacks\n";
     }else if (attack == "2") {
         sheild = true;
         damage = 0;
