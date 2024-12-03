@@ -6,15 +6,15 @@ int con();
 int main() {
     string fileline;//step 4
     ifstream ifs;//step 5
-    ifs.open("input.txt");//step 6
+    ifs.open("https://github.com/KluppMackenzie/FinalProject/blob/26c345e1a2b48785938a76b6e474fd9827792d04/input.txt");//step 6
 
 
 
-    string name, input, attack;
+    string name, input;
     string fightOptions[3][4] ={"flameshot", "strike", "Abscond", "MageSheild",
         "Stabbing", "Sheild", "Abscond", "BackHand", "ArrowFire", "Sheild", "Abscond", "BowSmack"};
 
-    int in, pat = 0;
+    int in, hp, opHp, opAttack, damage;
 
 
     //title screen
@@ -54,35 +54,34 @@ int main() {
        }
        }
    while (input != "1" && input != "2" && input != "3");
-    if (input == "3") {
-        in = 2;
+    if (input == "1") {
+        in = 0;
+        hp = 15
         cout << "you chose mage! and can cast spells against your targets! but be careful attack effect you more do to lower HP." << endl ;
     }
     else if (input == "2") {
         in = 1;
-        cout << "you chose mage! and can cast spells against your targets! but be careful attack effect you more do to lower HP." << endl ;
+        hp = 25;
+        cout << "you chose Fighter! you have a higher." << endl ;
     }else {
         in = 0;
+        hp = 20;
+        cout << "you chose Archer! you take less damage then most due to higher dextarity." << endl ;
     }
     //story continues
-   cout << "" << endl;
-   cout << "" << endl;
-   cout << "" << endl;
    con();
+    // First Fight starts
+    opHp = 15;
+    cout << "your first opponent has entered the ring you must defeat all 3 opponents to win!" << endl ;
+    while (hp> 0 && opHp > 0) {
+        opAttack = rand() %4;
+        cout << opAttack;
 
+    }
 
-    do {
-        if (pat > 4) cout << "your foe is getting impatient do something before they ready their next attack \n";
-        if (pat > 6) {
-            cout << "you lost your turn, foe is attacking.\n";
-        }
-        cout << "How will you attack?\n";
-        cout << fightOptions[in][0] << "[1] " <<fightOptions[in][1]<< "[2] " <<fightOptions[in][2] << "[3] " <<fightOptions[in][3] << "[4] " << endl;
-
-        cin >> attack;
-        pat ++;
-    }while (attack != "1" && attack != "2" && attack != "3" && attack != "4");
-
+    if (hp > 0) {
+        cout << "YOu died";
+    }
     ifs.close();
    return 0;
 }
